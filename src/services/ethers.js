@@ -21,10 +21,12 @@ class Ethers {
     }
 
     subscribe = async function(userId) {
+        console.log(userId)
         const amount = await this.relayerSubscription.subscriptionPrice();
-        let amountWei = ethers.utils.parseEther(amount);
+        //let amountWei = ethers.utils.parseEther(amount.toString());
+        console.log(amount.toString())
         try {
-            const tx = await this.relayerSubscription.subscribe(userId, {value: amountWei})
+            const tx = await this.relayerSubscription.subscribe(userId)
             await tx.wait();
             return true;
         } catch(err) {

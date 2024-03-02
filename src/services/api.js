@@ -74,20 +74,6 @@ class Api {
             return error
         }
     }
-
-    execute = async function(payload) {
-        const url = this.baseUrl + "/execute"
-        try {
-            const resp = await axios.post(url, payload);
-            if (resp.status == 200) {
-                return resp.data;
-            } else {
-                return resp.error
-            }
-        } catch(error) {
-            return error
-        }
-    }
 }
 
 export default Api
