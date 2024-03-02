@@ -52,22 +52,21 @@ class Api {
         }
     }
 
-    getUser = async function() {
-        const token = localStorage.getItem("token");
-        console.log(token)
+    getUser = async function(token) {
         const headers = {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json' // Assuming JSON data
         };
+        console.log(token, "  TTTTTTTT")
 
         const url = this.baseUrl + "/user"
         try {
-            const resp = await axios.post(url, null, {
+            const resp = await axios.get(url, {
                 headers
             });
-
+            console.log(resp)
             if (resp.status == 200) {
-                return resp.data.user
+                return resp.data
             } else {
                 return resp.error
             }

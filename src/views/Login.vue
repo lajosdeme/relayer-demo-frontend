@@ -33,7 +33,9 @@ export default {
 
       const api = new Api();
       const response = await api.login(email, password);
+      console.log("token: ", response.token)
       if (response.status == "ok") {
+        console.log("ok")
         console.log(response.user_id);
         console.log(response.token);
         localStorage.setItem("token", response.token);
